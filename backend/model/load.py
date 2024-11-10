@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from faker import Faker
 
 # Load data
 bank_data = pd.read_csv('../data/bank/bank_data.csv')
@@ -70,3 +71,61 @@ merged_data.fillna(0, inplace=True)
 
 #To csv
 merged_data.to_csv('../data/fullDB/data.csv', index=False)
+
+
+
+#load execution data
+fake = Faker()
+
+def generate_complete_fake_data():
+    return {
+        'Name': fake.name(),
+        'Unique ID': fake.uuid4(),
+        'Account Type': fake.random_element(elements=['Checking', 'Savings', 'Credit']),
+        'Account Balance_x': round(fake.random_number(digits=5) + fake.pyfloat(right_digits=2, positive=True), 2),
+        'Last Transaction Date_x': fake.date_between(start_date='-5y', end_date='today').isoformat(),
+        'Overdraft Status': fake.random_element(elements=['Yes', 'No']),
+        'Active Status': fake.random_element(elements=['Yes', 'No']),
+        'Student ID': fake.random_int(min=100000, max=999999),
+        'Major': fake.random_element(elements=['Computer Science', 'Biology', 'Mathematics', 'History']),
+        'GPA': round(fake.pyfloat(left_digits=1, right_digits=2, positive=True, min_value=2.0, max_value=4.0), 2),
+        'Date of Birth': fake.date_of_birth(minimum_age=18, maximum_age=90).isoformat(),
+        'Date of Death': fake.random_element(elements=[None, fake.date_this_year().isoformat()]),
+        'Cause of Death': fake.random_element(elements=['Natural Causes', 'Accident', 'Illness', None]),
+        'EmployeeID': fake.uuid4(),
+        'Position': fake.job(),
+        'Salary': round(fake.random_number(digits=5) + fake.pyfloat(right_digits=2, positive=True), 2),
+        'Account Number': f"ACC{fake.random_number(digits=5, fix_len=True)}",
+        'Last Transaction Date_y': fake.date_between(start_date='-5y', end_date='today').isoformat(),
+        'Account Balance_y': round(fake.random_number(digits=5) + fake.pyfloat(right_digits=2, positive=True), 2),
+        'BenefitType': fake.random_element(elements=['Healthcare', 'Unemployment', 'Disability']),
+        'LastClaimDate': fake.date_between(start_date='-5y', end_date='today').isoformat(),
+        'Status': fake.random_element(elements=['Active', 'Inactive']),
+        'PatientID': fake.uuid4(),
+        'LastAppointmentDate': fake.date_between(start_date='-1y', end_date='today').isoformat(),
+        'ActivePrescriptions': fake.random_int(min=0, max=5),
+        'Taxpayer ID': fake.ssn(),
+        'Last Filed Year': fake.random_int(min=2015, max=2023),
+        'Tax Libaility': round(fake.random_number(digits=4) + fake.pyfloat(right_digits=2, positive=True), 2),
+        'Voter ID': fake.uuid4(),
+        'Last Voted Date': fake.date_between(start_date='-4y', end_date='today').isoformat(),
+        'Registration Status': fake.random_element(elements=['Registered', 'Not Registered']),
+        'CaseNumber': fake.uuid4(),
+        'LastCourtAppearance': fake.date_between(start_date='-5y', end_date='today').isoformat(),
+        'CaseStatus': fake.random_element(elements=['Open', 'Closed', 'Pending']),
+        'Username': fake.user_name(),
+        'LastLoginDate': fake.date_between(start_date='-1y', end_date='today').isoformat(),
+        'PostsLastYear': fake.random_int(min=0, max=50),
+        'Address': fake.address(),
+        'Electricity Usage': round(fake.random_number(digits=4) + fake.pyfloat(right_digits=2, positive=True), 2),
+        'Water Usage': round(fake.random_number(digits=3) + fake.pyfloat(right_digits=2, positive=True), 2),
+        'Last Payment Date': fake.date_between(start_date='-1y', end_date='today').isoformat(),
+        'Passport Number': f"P{fake.random_number(digits=8, fix_len=True)}",
+        'Last Travel Date': fake.date_between(start_date='-2y', end_date='today').isoformat(),
+        'Destination': fake.country(),
+        'Target': fake.random_element(elements=[0] * 8 + [1] * 2)
+    }
+
+synthetic_data = pd.DataFrame([generate_complete_fake_data() for _ in range(200)])
+
+synthetic_data.to_csv('../modelPK/real_data.csv', index=False)
