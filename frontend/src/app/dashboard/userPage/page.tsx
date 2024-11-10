@@ -63,7 +63,7 @@
 
 import { columns } from "@/app/dashboard/userPage/columns"
 import { DataTable } from "./data-table"
-import {getInvoices, Invoice} from "@/app/utils/dummyTableData";
+import {getInvoices} from "@/app/utils/dummyTableData";
 
 // async function getData(): Promise<Account[]> {
 //     // Fetch data from your API here.

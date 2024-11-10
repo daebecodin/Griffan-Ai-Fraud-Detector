@@ -1,25 +1,35 @@
-import { Invoice, invoices } from '@/app/utils/dummyTableData'; // Correct import statement
+import { Invoice, invoices } from '@/app/utils/dummyTableData';
 
-interface UserProfilePageProps {
-    params: { accNum: string };
-}
+export default async function UserProfilePage({ params }: { params: { accNum: string } }) {
+    // If params is a Promise, await it
+    // const resolvedParams = await params;
 
-export default function UserProfilePage({ params }: UserProfilePageProps) {
-    // Debugging code to check params and matching logic
+    // Logging for debugging
     console.log("params.accNum:", params.accNum);
-    const matchingUsers = invoices.filter(u => u.accountNum === params.accNum);
+
+    // Filter and find matching users based on account number
+    const matchingUsers = invoices.filter((u: Invoice) => u.accountNum === params.accNum);
     console.log("Matching users found:", matchingUsers);
+
+    // Warning if no matching user found
     if (matchingUsers.length === 0) {
         console.warn("No matching user found");
     }
 
-    // Find the matching invoice based on accNum
+    // Find the first matching user based on accNum
     const user = invoices.find((u: Invoice) => u.accountNum === params.accNum);
 
+    // Handle case where no user is found
     if (!user) {
-        return <div>User not found</div>;
+        return (
+            <div className="p-4">
+                <h1 className="text-2xl font-bold">User not found</h1>
+                <p>Please check the account number and try again.</p>
+            </div>
+        );
     }
 
+    // Render user details
     return (
         <div className="p-4">
             <h1 className="text-2xl font-bold">{user.name}</h1>

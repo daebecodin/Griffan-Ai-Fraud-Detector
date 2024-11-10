@@ -13,7 +13,6 @@ import {
 import { NavMain } from "@/components/nav-main"
 // import { NavSecondary } from "@/components/nav-secondary"
 // import { NavWorkspaces } from "@/components/nav-workspaces"
-import { TeamSwitcher } from "@/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -258,7 +257,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar className="border-r-0" {...props}>
       <SidebarHeader className={"bg-accent"}>
-        <TeamSwitcher teams={data.teams} />
         <NavMain items={data.navMain} />
       </SidebarHeader>
       <SidebarContent className={"bg-accent"}>
