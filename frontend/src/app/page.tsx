@@ -1,82 +1,39 @@
-import Image from "next/image";
-import Examples from "./components/Examples"; // Import the Examples component
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)] space-y-5">
-          <li>
-            Use Restack Engine SDK with{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              @restackio/ai
-            </code>
-          </li>
-          <li className="mb-2">
-            See how to trigger on
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/actions/trigger.tsx
-            </code>
-            .
-          </li>
-        </ol>
-        <Examples /> {/* Use the Examples component */}
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    return (
+        <div className="grid grid-cols-2 min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-background">
+            {/* Left Side */}
+            <div className="flex flex-col p-5 gap-3 h-full">
+                <main className="flex flex-col gap-8 row-start-2 items-start font-poppins text-text text-h1 font-bold w-full">
+                    <p>Griffin</p>
+                </main>
+                <footer className="row-start-3 flex gap-6 flex-wrap items-start justify-start w-full">
+                    <p className={"text-text text-h5"}>
+                        Real-time fraud detection to secure bank accounts and protect families,
+                        using advanced analytics and diverse data sources.
+                    </p>
+
+                </footer>
+            </div>
+
+            {/* Right Side */}
+            <div className="flex flex-col p-5 bg-blue-50 gap-3 h-full">
+                <main className="flex flex-col gap-8 row-start-2 items-start font-poppins text-text text-h1 font-bold bg-secondary w-full">
+                    <p>Right Side Content</p>
+                </main>
+                <footer className="row-start-3 flex gap-6 flex-wrap items-start justify-start w-full">
+                    <p className={"text-text text-h5 bg-accent"}>
+                        Additional content or similar information can be displayed here.
+                    </p>
+                    <Button asChild>
+                        <Link href="/dashboard">Get started</Link>
+                    </Button>
+
+                </footer>
+            </div>
+        </div>
+    );
 }

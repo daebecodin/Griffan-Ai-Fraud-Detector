@@ -1,7 +1,6 @@
+// next.config.mjs
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ['@restackio/ai'],
-  },
+  serverExternalPackages: ['@restackio/ai'],
 }
 export default nextConfig;
