@@ -1,5 +1,8 @@
-export default function ReportPage() {
+import ContactForm from "@/components/alert-form";
+
+export default function ReportDropdownButton() {
+
     return (
-        <p>reports</p>
-    )
+        <ContactForm/>
+    );
 }
