@@ -6,7 +6,7 @@ interface UserProfilePageProps {
 
 export default function UserProfilePage({ params }: UserProfilePageProps) {
     // Find the matching invoice based on accNum
-    const user = invoices.find((u) => u.accNum === params.accNum);
+    const user = invoices.find((u) => u.accountNum === params.accNum);
 
     if (!user) {
         return <div>User not found</div>;
@@ -14,14 +14,14 @@ export default function UserProfilePage({ params }: UserProfilePageProps) {
 
     // Determine the background color based on fraudStatus
     let textBgColor = '';
-    if (user.overdraftStatus === 'Yes') textBgColor = 'bg-red-500 text-white';
-    else if (user.overdraftStatus === 'No') textBgColor = 'bg-green-500 text-white';
-    else if (user.overdraftStatus === 'Suspected') textBgColor = 'bg-yellow-500 text-black';
+    if (user.activeStatus === 'No') textBgColor = 'bg-red-500 text-white';
+    else if (user.activeStatus === 'Yes') textBgColor = 'bg-green-500 text-white';
+
 
     return (
         <div className="p-4">
             <h1 className="text-2xl font-bold">{user.name}</h1>
-            <p><strong>Account Number</strong> {user.accNum}</p>
+            <p><strong>Account Number</strong> {user.accountNum}</p>
             <p><strong>Account Type</strong> {user.accountType}</p>
             <p><strong>Balance</strong> {user.accountBalance}</p>
             <p>
