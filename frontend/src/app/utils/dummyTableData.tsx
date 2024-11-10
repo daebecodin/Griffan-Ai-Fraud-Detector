@@ -1,7 +1,6 @@
-import { ColumnDef } from "@tanstack/react-table"
+import { faker } from '@faker-js/faker';
 
-
-export type Invoice = {
+export interface Invoice {
     name: string;
     accountNum: string;
     accountType: string;
@@ -9,98 +8,56 @@ export type Invoice = {
     lastTransactionDate: string;
     accountStatus: string;
     activeStatus: string;
+    dateOfBirth: string;
+    dateOfDeath: string;
+    causeOfDeath: string;
+    homeState: string;
+    stateOfLastTransaction: string;
 }
-export async function getInvoices(): Promise<Invoice[]> { // Change the return type to Promise<Invoice[]>
-    return [
-        {
-            name: "Ashley Wilson",
-            accountNum: "ACC10000",
-            accountType: "Checking",
-            accountBalance: 9187.06,
-            lastTransactionDate: "2023-08-17",
-            accountStatus: "Yes",
-            activeStatus: "Yes",
-        },
-        {
-            name: "Teresa Young",
-            accountNum: "ACC10001",
-            accountType: "Savings",
-            accountBalance: 8478.26,
-            lastTransactionDate: "2018-05-13",
-            accountStatus: "No",
-            activeStatus: "No",
-        },
-        {
-            name: "Vincent Ward",
-            accountNum: "ACC10002",
-            accountType: "Credit",
-            accountBalance: 8343.97,
-            lastTransactionDate: "2017-05-10",
-            accountStatus: "No",
-            activeStatus: "Yes",
-        },
-        {
-            name: "Elizabeth Lopez",
-            accountNum: "ACC10003",
-            accountType: "Checking",
-            accountBalance: 4360.14,
-            lastTransactionDate: "2018-03-02",
-            accountStatus: "Yes",
-            activeStatus: "Yes",
-        },
-        {
-            name: "Louis Rivera",
-            accountNum: "ACC10004",
-            accountType: "Savings",
-            accountBalance: 978.34,
-            lastTransactionDate: "2021-05-19",
-            accountStatus: "No",
-            activeStatus: "No",
-        },
-        {
-            name: "Grace Alexander",
-            accountNum: "ACC10005",
-            accountType: "Loan",
-            accountBalance: 6903.18,
-            lastTransactionDate: "2018-12-09",
-            accountStatus: "Yes",
-            activeStatus: "Yes",
-        },
-        {
-            name: "Jeremy Walker",
-            accountNum: "ACC10006",
-            accountType: "Checking",
-            accountBalance: 3284.44,
-            lastTransactionDate: "2023-04-29",
-            accountStatus: "No",
-            activeStatus: "No",
-        },
-        {
-            name: "Brian Anderson",
-            accountNum: "ACC10007",
-            accountType: "Savings",
-            accountBalance: 724.13,
-            lastTransactionDate: "2021-01-19",
-            accountStatus: "Yes",
-            activeStatus: "No",
-        },
-        {
-            name: "Jeremy Walker",
-            accountNum: "ACC10008",
-            accountType: "Savings",
-            accountBalance: 5417.91,
-            lastTransactionDate: "2019-03-08",
-            accountStatus: "No",
-            activeStatus: "Yes",
-        },
-        {
-            name: "Michael Williams",
-            accountNum: "ACC10009",
-            accountType: "Loan",
-            accountBalance: 1387.39,
-            lastTransactionDate: "2020-05-07",
-            accountStatus: "No",
-            activeStatus: "No",
-        },
-    ];
+
+const states = ["California", "Texas", "New York", "Florida", "Ohio", "Nevada", "Illinois", "Arizona", "Georgia", "New Jersey", "Colorado"];
+
+export async function getInvoices(): Promise<Invoice[]> {
+    const invoices: Invoice[] = [];
+
+    for (let i = 0; i < 200; i++) {
+        const name = faker.person.fullName();
+        const accountNum = `ACC${faker.number.int({ min: 10000, max: 99999 })}`;
+        const accountType = faker.helpers.arrayElement(["Checking", "Savings", "Credit", "Loan"]);
+        const accountBalance = faker.number.float({ min: 0, max: 15000 });
+        const lastTransactionDate = faker.date.past().toISOString().split('T')[0];
+        const dateOfBirth = faker.date.past({ years: 60 }).toISOString().split('T')[0];
+        const dateOfDeath = faker.datatype.boolean() ? faker.date.past({ years: 5 }).toISOString().split('T')[0] : "N/A";
+        const causeOfDeath = dateOfDeath !== "N/A" ? faker.helpers.arrayElement(["Natural Causes", "Accident", "Illness"]) : "N/A";
+        const homeState = faker.helpers.arrayElement(states);
+        const stateOfLastTransaction = faker.helpers.arrayElement(states);
+
+        // Determine account status
+        let accountStatus = "Yes";
+        if (homeState !== stateOfLastTransaction) {
+            accountStatus = "Under Review";
+        }
+        if (dateOfDeath !== "N/A" && new Date(dateOfDeath) < new Date(lastTransactionDate)) {
+            accountStatus = "Fraud";
+        }
+
+        const activeStatus = faker.helpers.arrayElement(["Yes", "No"]);
+
+        invoices.push({
+            name,
+            accountNum,
+            accountType,
+            accountBalance,
+            lastTransactionDate,
+            accountStatus,
+            activeStatus,
+            dateOfBirth,
+            dateOfDeath,
+            causeOfDeath,
+            homeState,
+            stateOfLastTransaction,
+        });
+    }
+
+    return invoices;
 }
