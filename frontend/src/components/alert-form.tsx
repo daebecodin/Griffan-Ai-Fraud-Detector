@@ -1,41 +1,133 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
+"use client";
+
+import { formSchema } from "@//lib/shemas";
+
+import {
+    Card,
+    CardHeader,
+    CardTitle,
+    CardDescription,
+    CardContent,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+
+import { z } from "zod";
+import { send } from "@//lib/email";
 
 export default function ContactForm() {
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            message: "",
+        },
+    });
+
+    // 2. Define a submit handler.
+    function onSubmit(values: z.infer<typeof formSchema>) {
+        // Do something with the form values.
+        // ✅ This will be type-safe and validated.
+        send(values);
+    }
+
     return (
-        <Card className="w-full max-w-md mx-auto">
+        <Card className="mx-auto max-w-md">
             <CardHeader>
-                <CardTitle>Contact Us</CardTitle>
-                <CardDescription>Fill out the form below to get in touch with us.</CardDescription>
+                <CardTitle>Status Form</CardTitle>
+                <CardDescription>
+                   Send Status Report
+                </CardDescription>
             </CardHeader>
             <CardContent>
-                <form>
-                    <div className="grid w-full items-center gap-4">
-                        <div className="flex flex-col space-y-1.5">
-                            <Label htmlFor="firstname">First Name</Label>
-                            <Input id="firstname" placeholder="Enter your first name" />
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <FormField
+                                    control={form.control}
+                                    name="firstName"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>First Name</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="Your first name" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <FormField
+                                    control={form.control}
+                                    name="lastName"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Last Name</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="Your last name" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
                         </div>
-                        <div className="flex flex-col space-y-1.5">
-                            <Label htmlFor="lastname">Last Name</Label>
-                            <Input id="lastname" placeholder="Enter your last name" />
+                        <div className="space-y-2">
+                            <FormField
+                                control={form.control}
+                                name="email"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Email</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="Your Email" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                         </div>
-                        <div className="flex flex-col space-y-1.5">
-                            <Label htmlFor="subject">Subject</Label>
-                            <Input id="subject" placeholder="Enter the subject" />
+                        <div className="space-y-2">
+                            <FormField
+                                control={form.control}
+                                name="message"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Message</FormLabel>
+                                        <FormControl>
+                                            <Textarea
+                                                id="message"
+                                                placeholder="Type in your message here"
+                                                className="min-h-[120px]"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                         </div>
-                        <div className="flex flex-col space-y-1.5">
-                            <Label htmlFor="message">Message</Label>
-                            <Textarea id="message" placeholder="Type your message here" rows={4} />
-                        </div>
-                    </div>
-                </form>
+                        <Button type="submit" className="ml-auto">
+                            Submit
+                        </Button>
+                    </form>
+                </Form>
             </CardContent>
-            <CardFooter>
-                <Button className="w-full">Submit</Button>
-            </CardFooter>
         </Card>
-    )
+    );
 }
