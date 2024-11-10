@@ -18,6 +18,9 @@ ENV NEXT_PUBLIC_API_HOSTNAME=${NEXT_PUBLIC_API_HOSTNAME}
 
 RUN npm run build
 
+COPY ./public ./public
+
+
 # Expose the port the app runs on
 EXPOSE 80
 

@@ -29,6 +29,6 @@ services:
     ports:
       - "8000:3000"
     env_file:
-      - ./backend/.env
+      - backend/.env.local
     networks:
       - bridge

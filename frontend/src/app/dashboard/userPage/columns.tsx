@@ -3,8 +3,18 @@
 import { ColumnDef } from "@tanstack/react-table"
 import {ArrowUpDown, MoreHorizontal} from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Checkbox } from "@/components/ui/checkbox"
+// import { Badge } from "@/components/ui/badge"
+import {Checkbox} from "@/components/ui/checkbox";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+
+import ContactForm from "@/components/alert-form";
+
 
 import {
     DropdownMenu,
@@ -15,6 +25,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {Invoice} from "@/app/utils/dummyTableData";
+import Link from "next/link";
 
 
 
@@ -78,7 +89,7 @@ export const columns: ColumnDef<Invoice>[] = [
     {
         id: "actions",
         cell: ({ row }) => {
-            const payment = row.original
+            const accNum = row.original.accountNum
 
             return (
                 <DropdownMenu>
@@ -90,16 +101,28 @@ export const columns: ColumnDef<Invoice>[] = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem
-                            onClick={() => navigator.clipboard.writeText(payment.accountStatus)}
-                        >
-                            Send Message
+                        <DropdownMenuItem asChild>
+                            <Dialog>
+                                <DialogTrigger asChild>
+                                    <Button variant="ghost">Send Report</Button>
+                                </DialogTrigger>
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle>Send a Report</DialogTitle>
+                                    </DialogHeader>
+                                    <ContactForm />
+                                </DialogContent>
+                            </Dialog>
                         </DropdownMenuItem>
+
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>View User</DropdownMenuItem>
-                        {/*<DropdownMenuItem>View payment details</DropdownMenuItem>*/}
+                        <Link href={`/dashboard/userPage/${accNum}`}>
+                            <DropdownMenuItem>View User</DropdownMenuItem>
+                        </Link>
                     </DropdownMenuContent>
                 </DropdownMenu>
+
+
             )
         },
     },

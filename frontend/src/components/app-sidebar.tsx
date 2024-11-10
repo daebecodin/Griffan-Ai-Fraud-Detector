@@ -3,23 +3,16 @@
 import * as React from "react"
 import {
   AudioWaveform,
-  Blocks,
-  Calendar,
   Command,
   Home,
-  Inbox,
-  MessageCircleQuestion,
   Search,
-  Settings2,
   Sparkles,
-  Trash2,
 } from "lucide-react"
 
 // import { NavFavorites } from "@/components/nav-favorites"
 import { NavMain } from "@/components/nav-main"
-import { NavSecondary } from "@/components/nav-secondary"
+// import { NavSecondary } from "@/components/nav-secondary"
 // import { NavWorkspaces } from "@/components/nav-workspaces"
-import { TeamSwitcher } from "@/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -48,6 +41,12 @@ const data = {
   ],
   navMain: [
     {
+      title: "Home",
+      url: "/dashboard",
+      icon: Home,
+      // isActive: false,
+    },
+    {
       title: "All Users",
       url: "/dashboard/userPage",
       icon: Search,
@@ -57,45 +56,40 @@ const data = {
       url: "/dashboard/reportPage",
       icon: Sparkles,
     },
-    {
-      title: "Home",
-      url: "#",
-      icon: Home,
-      // isActive: false,
-    },
-    {
-      title: "Inbox",
-      url: "#",
-      icon: Inbox,
-      badge: "10",
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Calendar",
-      url: "#",
-      icon: Calendar,
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-    },
-    {
-      title: "Templates",
-      url: "#",
-      icon: Blocks,
-    },
-    {
-      title: "Trash",
-      url: "#",
-      icon: Trash2,
-    },
-    {
-      title: "Help",
-      url: "#",
-      icon: MessageCircleQuestion,
-    },
+
+    // {
+    //   title: "Inbox",
+    //   url: "#",
+    //   icon: Inbox,
+    //   badge: "10",
+    // },
+  // ],
+  // navSecondary: [
+  //   {
+  //     title: "Calendar",
+  //     url: "#",
+  //     icon: Calendar,
+  //   },
+  //   {
+  //     title: "Settings",
+  //     url: "#",
+  //     icon: Settings2,
+  //   },
+  //   {
+  //     title: "Templates",
+  //     url: "#",
+  //     icon: Blocks,
+  //   },
+  //   {
+  //     title: "Trash",
+  //     url: "#",
+  //     icon: Trash2,
+  //   },
+  //   {
+  //     title: "Help",
+  //     url: "#",
+  //     icon: MessageCircleQuestion,
+  //   },
   ],
   favorites: [
     {
@@ -263,13 +257,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar className="border-r-0" {...props}>
       <SidebarHeader className={"bg-accent"}>
-        <TeamSwitcher teams={data.teams} />
         <NavMain items={data.navMain} />
       </SidebarHeader>
       <SidebarContent className={"bg-accent"}>
         {/*<NavFavorites favorites={data.favorites} />*/}
         {/*<NavWorkspaces workspaces={data.workspaces} />*/}
-        <NavSecondary items={data.navSecondary} className="mt-auto bg-accent" />
+        {/*<NavSecondary items={data.navSecondary} className="mt-auto bg-accent" />*/}
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
