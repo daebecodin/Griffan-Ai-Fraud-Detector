@@ -48,6 +48,12 @@ const data = {
   ],
   navMain: [
     {
+      title: "Home",
+      url: "/dashboard",
+      icon: Home,
+      // isActive: false,
+    },
+    {
       title: "All Users",
       url: "/dashboard/userPage",
       icon: Search,
@@ -57,12 +63,7 @@ const data = {
       url: "/dashboard/reportPage",
       icon: Sparkles,
     },
-    // {
-    //   title: "Home",
-    //   url: "#",
-    //   icon: Home,
-    //   // isActive: false,
-    // },
+
     // {
     //   title: "Inbox",
     //   url: "#",
