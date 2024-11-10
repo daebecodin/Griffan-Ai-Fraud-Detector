@@ -48,7 +48,7 @@ export default function UserProfilePage({ params }: UserProfilePageProps) {
             </div>
         );
     }
-
+//dumbshit
     if (!user) {
         return (
             <div className="p-4">
