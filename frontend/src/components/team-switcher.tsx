@@ -7,9 +7,9 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
+  // DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
+  // DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
@@ -17,6 +17,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import Link from "next/link";
+import {Button} from "@/components/ui/button";
 
 export function TeamSwitcher({
   teams,
@@ -48,28 +50,31 @@ export function TeamSwitcher({
             side="bottom"
             sideOffset={4}
           >
-            <DropdownMenuLabel className="text-xs text-slate-500 dark:text-slate-400">
-              Teams
-            </DropdownMenuLabel>
-            {teams.map((team, index) => (
-              <DropdownMenuItem
-                key={team.name}
-                onClick={() => setActiveTeam(team)}
-                className="gap-2 p-2"
-              >
-                <div className="flex size-6 items-center justify-center rounded-sm border">
-                  <team.logo className="size-4 shrink-0" />
-                </div>
-                {team.name}
-                <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
-              </DropdownMenuItem>
-            ))}
+            {/*<DropdownMenuLabel className="text-xs text-slate-500 dark:text-slate-400">*/}
+            {/*  Teams*/}
+            {/*</DropdownMenuLabel>*/}
+            {/*{teams.map((team, index) => (*/}
+            {/*  <DropdownMenuItem*/}
+            {/*    key={team.name}*/}
+            {/*    onClick={() => setActiveTeam(team)}*/}
+            {/*    className="gap-2 p-2"*/}
+            {/*  >*/}
+            {/*    <div className="flex size-6 items-center justify-center rounded-sm border">*/}
+            {/*      <team.logo className="size-4 shrink-0" />*/}
+            {/*    </div>*/}
+            {/*    {team.name}*/}
+            {/*    <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>*/}
+            {/*  </DropdownMenuItem>*/}
+            {/*))}*/}
             <DropdownMenuSeparator />
             <DropdownMenuItem className="gap-2 p-2">
               <div className="flex size-6 items-center justify-center rounded-md border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
                 <Plus className="size-4" />
               </div>
-              <div className="font-medium text-slate-500 dark:text-slate-400">Add team</div>
+              <Link href="/">
+                <Button className="font-medium text-slate-500 dark:text-slate-400">Landing page</Button>
+              </Link>
+
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

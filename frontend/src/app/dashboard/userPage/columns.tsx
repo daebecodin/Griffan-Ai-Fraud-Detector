@@ -3,6 +3,9 @@
 import { ColumnDef } from "@tanstack/react-table"
 import {ArrowUpDown, MoreHorizontal} from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Checkbox } from "@/components/ui/checkbox"
+
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -11,18 +14,36 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {Invoice} from "@/app/utils/dummyTableData";
+
 
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Account = {
-    name: string
-    accNum: number
-    status: "open" | "closed" | "pending" | "fraud"
-    type: "checking" | "saving" | "credit"
-}
 
-export const columns: ColumnDef<Account>[] = [
+
+
+export const columns: ColumnDef<Invoice>[] = [
+    {
+        id: "select",
+        header: ({ table }) => (
+            <Checkbox
+                checked={
+                    table.getIsAllPageRowsSelected() ||
+                    (table.getIsSomePageRowsSelected() && "indeterminate")
+                }
+                onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+                aria-label="Select all"
+            />
+        ),
+        cell: ({ row }) => (
+            <Checkbox
+                checked={row.getIsSelected()}
+                onCheckedChange={(value) => row.toggleSelected(!!value)}
+                aria-label="Select row"
+            />
+        )
+    },
     {
         accessorKey: "name",
         header: ({ column }) => {
@@ -38,11 +59,11 @@ export const columns: ColumnDef<Account>[] = [
         },
     },
     {
-        accessorKey: "accNum",
+        accessorKey: "accountNum",
         header: "Account Number",
     },
     {
-        accessorKey: "type",
+        accessorKey: "accountType",
         header: "Account Type",
     },
     {
@@ -70,7 +91,7 @@ export const columns: ColumnDef<Account>[] = [
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem
-                            onClick={() => navigator.clipboard.writeText(payment.status)}
+                            onClick={() => navigator.clipboard.writeText(payment.accountStatus)}
                         >
                             Send Message
                         </DropdownMenuItem>

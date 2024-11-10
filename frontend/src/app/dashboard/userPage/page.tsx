@@ -61,24 +61,25 @@
 //     );
 // }
 
-import { Account, columns } from "@/app/dashboard/userPage/columns"
+import { columns } from "@/app/dashboard/userPage/columns"
 import { DataTable } from "./data-table"
+import {getInvoices, Invoice} from "@/app/utils/dummyTableData";
 
-async function getData(): Promise<Account[]> {
-    // Fetch data from your API here.
-    return [
-        {
-            name: "Bob",
-            accNum: 124532,
-            status: "open",
-            type: "checking",
-        },
-        // ...
-    ]
-}
+// async function getData(): Promise<Account[]> {
+//     // Fetch data from your API here.
+//     return [
+//         {
+//             name: "Bob",
+//             accNum: 124532,
+//             status: "open",
+//             type: "checking",
+//         },
+//         // ...
+//     ]
+// }
 
 export default async function DemoPage() {
-    const data = await getData()
+    const data = await getInvoices()
 
     return (
         <div className="container mx-auto py-10">
