@@ -1,0 +1,32 @@
+<SocialMediaUsers>
+    <User>
+        <Name>Emily Johnson</Name>
+        <Username>emilyj85</Username>
+        <LastLoginDate>2019-10-12</LastLoginDate>
+        <PostsLastYear>0</PostsLastYear>
+    </User>
+    <User>
+        <Name>Michael Williams</Name>
+        <Username>mike_w</Username>
+        <LastLoginDate>2023-09-28</LastLoginDate>
+        <PostsLastYear>120</PostsLastYear>
+    </User>
+    <User>
+        <Name>Sarah Brown</Name>
+        <Username>sarah_b</Username>
+        <LastLoginDate>2018-07-20</LastLoginDate>
+        <PostsLastYear>0</PostsLastYear>
+    </User>
+    <User>
+        <Name>Ashley Wilson</Name>
+        <Username>ashley_w</Username>
+        <LastLoginDate>2023-10-05</LastLoginDate>
+        <PostsLastYear>85</PostsLastYear>
+    </User>
+    <User>
+        <Name>David Jones</Name>
+        <Username>dave_j</Username>
+        <LastLoginDate>2020-01-15</LastLoginDate>
+        <PostsLastYear>0</PostsLastYear>
+    </User>
+</SocialMediaUsers>

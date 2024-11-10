@@ -1,0 +1,20 @@
+[
+    {
+        "Name": "Michael Williams",
+        "Passport Number": "P1234567",
+        "Last Travel Date": "2023-08-15",
+        "Destination": "France"
+    },
+    {
+        "Name": "Ashley Wilson",
+        "Passport Number": "P2345678",
+        "Last Travel Date": "2023-09-10",
+        "Destination": "Japan"
+    },
+    {
+        "Name": "James Davis",
+        "Passport Number": "P3456789",
+        "Last Travel Date": "2023-07-20",
+        "Destination": "Canada"
+    }
+]
