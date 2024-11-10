@@ -1,0 +1,37 @@
+[
+    {
+        "Name": "John Smith",
+        "Address": "123 Elm Street",
+        "Electricity Usage": 0,
+        "Water Usage": 0,
+        "Last Payment Date": "2018-05-20"
+    },
+    {
+        "Name": "Emily Johnson",
+        "Address": "789 Pine Road",
+        "Electricity Usage": 0,
+        "Water Usage": 0,
+        "Last Payment Date": "2019-10-15"
+    },
+    {
+        "Name": "Michael Williams",
+        "Address": "321 Maple Lane",
+        "Electricity Usage": 400,
+        "Water Usage": 200,
+        "Last Payment Date": "2023-10-01"
+    },
+    {
+        "Name": "Ashley Wilson",
+        "Address": "456 Oak Avenue",
+        "Electricity Usage": 350,
+        "Water Usage": 150,
+        "Last Payment Date": "2023-09-30"
+    },
+    {
+        "Name": "David Jones",
+        "Address": "654 Cedar Street",
+        "Electricity Usage": 0,
+        "Water Usage": 0,
+        "Last Payment Date": "2020-02-10"
+    }
+]

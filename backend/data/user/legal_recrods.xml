@@ -1,0 +1,20 @@
+<LegalCases>
+    <Case>
+        <Name>Michael Williams</Name>
+        <CaseNumber>LC1003</CaseNumber>
+        <LastCourtAppearance>2023-09-25</LastCourtAppearance>
+        <CaseStatus>Active</CaseStatus>
+    </Case>
+    <Case>
+        <Name>Ashley Wilson</Name>
+        <CaseNumber>LC1006</CaseNumber>
+        <LastCourtAppearance>2023-10-05</LastCourtAppearance>
+        <CaseStatus>Active</CaseStatus>
+    </Case>
+    <Case>
+        <Name>James Davis</Name>
+        <CaseNumber>LC1007</CaseNumber>
+        <LastCourtAppearance>2023-08-15</LastCourtAppearance>
+        <CaseStatus>Active</CaseStatus>
+    </Case>
+</LegalCases>
