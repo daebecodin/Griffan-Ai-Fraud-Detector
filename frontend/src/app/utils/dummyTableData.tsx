@@ -16,9 +16,9 @@ export interface Invoice {
 }
 
 const states = ["California", "Texas", "New York", "Florida", "Ohio", "Nevada", "Illinois", "Arizona", "Georgia", "New Jersey", "Colorado"];
+export const invoices: Invoice[] = [];
 
 export async function getInvoices(): Promise<Invoice[]> {
-    const invoices: Invoice[] = [];
 
     for (let i = 0; i < 200; i++) {
         const name = faker.person.fullName();

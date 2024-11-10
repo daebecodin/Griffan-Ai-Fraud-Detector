@@ -57,45 +57,45 @@ const data = {
       url: "/dashboard/reportPage",
       icon: Sparkles,
     },
-    {
-      title: "Home",
-      url: "#",
-      icon: Home,
-      // isActive: false,
-    },
-    {
-      title: "Inbox",
-      url: "#",
-      icon: Inbox,
-      badge: "10",
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Calendar",
-      url: "#",
-      icon: Calendar,
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-    },
-    {
-      title: "Templates",
-      url: "#",
-      icon: Blocks,
-    },
-    {
-      title: "Trash",
-      url: "#",
-      icon: Trash2,
-    },
-    {
-      title: "Help",
-      url: "#",
-      icon: MessageCircleQuestion,
-    },
+    // {
+    //   title: "Home",
+    //   url: "#",
+    //   icon: Home,
+    //   // isActive: false,
+    // },
+    // {
+    //   title: "Inbox",
+    //   url: "#",
+    //   icon: Inbox,
+    //   badge: "10",
+    // },
+  // ],
+  // navSecondary: [
+  //   {
+  //     title: "Calendar",
+  //     url: "#",
+  //     icon: Calendar,
+  //   },
+  //   {
+  //     title: "Settings",
+  //     url: "#",
+  //     icon: Settings2,
+  //   },
+  //   {
+  //     title: "Templates",
+  //     url: "#",
+  //     icon: Blocks,
+  //   },
+  //   {
+  //     title: "Trash",
+  //     url: "#",
+  //     icon: Trash2,
+  //   },
+  //   {
+  //     title: "Help",
+  //     url: "#",
+  //     icon: MessageCircleQuestion,
+  //   },
   ],
   favorites: [
     {
@@ -269,7 +269,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent className={"bg-accent"}>
         {/*<NavFavorites favorites={data.favorites} />*/}
         {/*<NavWorkspaces workspaces={data.workspaces} />*/}
-        <NavSecondary items={data.navSecondary} className="mt-auto bg-accent" />
+        {/*<NavSecondary items={data.navSecondary} className="mt-auto bg-accent" />*/}
       </SidebarContent>
       <SidebarRail />
     </Sidebar>

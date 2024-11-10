@@ -113,7 +113,7 @@ export function DataTable<TData, TValue>({
                 </DropdownMenu>
 
             </div>
-            <div className="bg-red-300">
+            <div className="">
                 <Table>
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
