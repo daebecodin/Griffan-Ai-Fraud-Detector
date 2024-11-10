@@ -20,12 +20,12 @@ export default function Home() {
             </div>
 
             {/* Right Side */}
-            <div className="flex flex-col p-5 bg-blue-50 gap-3 h-full">
-                <main className="flex flex-col gap-8 row-start-2 items-start font-poppins text-text text-h1 font-bold bg-secondary w-full">
+            <div className="flex flex-col p-5 bg-background gap-3 h-full">
+                <main className="flex flex-col gap-8 row-start-2 items-start font-poppins text-text text-h1 font-bold bg-background w-full">
                     <p>Right Side Content</p>
                 </main>
                 <footer className="row-start-3 flex gap-6 flex-wrap items-start justify-start w-full">
-                    <p className={"text-text text-h5 bg-accent"}>
+                    <p className={"text-text text-h5 bg-background"}>
                         Additional content or similar information can be displayed here.
                     </p>
                     <Button asChild>

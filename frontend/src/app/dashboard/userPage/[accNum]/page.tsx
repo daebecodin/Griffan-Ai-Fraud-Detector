@@ -14,19 +14,20 @@ export default function UserProfilePage({ params }: UserProfilePageProps) {
 
     // Determine the background color based on fraudStatus
     let textBgColor = '';
-    if (user.fraudStatus === 'Fraud') textBgColor = 'bg-red-500 text-white';
-    else if (user.fraudStatus === 'Safe') textBgColor = 'bg-green-500 text-white';
-    else if (user.fraudStatus === 'Suspected') textBgColor = 'bg-yellow-500 text-black';
+    if (user.overdraftStatus === 'Yes') textBgColor = 'bg-red-500 text-white';
+    else if (user.overdraftStatus === 'No') textBgColor = 'bg-green-500 text-white';
+    else if (user.overdraftStatus === 'Suspected') textBgColor = 'bg-yellow-500 text-black';
 
     return (
         <div className="p-4">
             <h1 className="text-2xl font-bold">{user.name}</h1>
-            <p><strong>Account Number:</strong> {user.accNum}</p>
-            <p><strong>Account Status:</strong> {user.accountStatus}</p>
+            <p><strong>Account Number</strong> {user.accNum}</p>
+            <p><strong>Account Type</strong> {user.accountType}</p>
+            <p><strong>Balance</strong> {user.accountBalance}</p>
             <p>
-                <strong>Fraud Status:</strong>{' '}
+                <strong>Account Status:</strong>{' '}
                 <span className={`px-2 py-1 rounded ${textBgColor}`}>
-                    {user.fraudStatus}
+                    {user.activeStatus}
                 </span>
             </p>
         </div>

@@ -18,14 +18,14 @@ export default function MainDashboardPage() {
         <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
-                <header className="flex h-14 shrink-0 items-center gap-2">
+                <header className="flex h-14 shrink-0 items-center gap-2 bg-accent">
                     <div className="flex flex-1 items-center gap-2 px-3">
-                        <SidebarTrigger />
-                        <Separator orientation="vertical" className="mr-2 h-4" />
+                        <SidebarTrigger className={"text-text"} />
+                        <Separator orientation="vertical" className="mr-2 h-4 text-pretty" />
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem>
-                                    <BreadcrumbPage className="line-clamp-1">
+                                    <BreadcrumbPage className="line-clamp-1 text-text">
                                         Project Management & Task Tracking
                                     </BreadcrumbPage>
                                 </BreadcrumbItem>
@@ -36,9 +36,13 @@ export default function MainDashboardPage() {
                         <NavActions />
                     </div>
                 </header>
-                <div className="flex flex-1 flex-col gap-4 px-4 py-10">
-                    <div className="mx-auto h-24 w-full max-w-3xl rounded-xl bg-muted/50" />
-                    <div className="mx-auto h-full w-full max-w-3xl rounded-xl bg-muted/50" />
+                <div className="flex flex-1 flex-col gap-4 px-4 py-10 bg-accent">
+                    <div className="mx-auto h-24 w-full max-w-3xl  bg-accent text-text" >
+                        <p className={"text-h1"}>Content</p>
+                    </div>
+                    <div className="mx-auto h-full w-full max-w-3xl  bg-accent" >
+                        <p className={"text-h1 text-text"}>Content</p>
+                    </div>
                 </div>
             </SidebarInset>
         </SidebarProvider>

@@ -262,14 +262,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar className="border-r-0" {...props}>
-      <SidebarHeader>
+      <SidebarHeader className={"bg-accent"}>
         <TeamSwitcher teams={data.teams} />
         <NavMain items={data.navMain} />
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className={"bg-accent"}>
         {/*<NavFavorites favorites={data.favorites} />*/}
         {/*<NavWorkspaces workspaces={data.workspaces} />*/}
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <NavSecondary items={data.navSecondary} className="mt-auto bg-accent" />
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
