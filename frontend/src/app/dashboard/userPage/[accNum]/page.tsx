@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'; // Use from 'next/navigation' instead of 'next/router'
 import { Invoice, invoices } from '@/app/utils/dummyTableData';
 
 interface UserProfilePageProps {
@@ -48,7 +48,7 @@ export default function UserProfilePage({ params }: UserProfilePageProps) {
             </div>
         );
     }
-//dumbshit
+
     if (!user) {
         return (
             <div className="p-4">
