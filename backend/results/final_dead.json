@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Ruth Martinez",
+        "accountNum": "0",
+        "accountType": "Loan",
+        "accountBalance": 6165.75,
+        "lastTransactionDate": "2017-04-15",
+        "activeStatus": "No",
+        "dateOfBirth": "0",
+        "dateOfDeath": "0",
+        "causeOfDeath": "0",
+        "probabilityOfDeath": 0.91
+    }
+]
